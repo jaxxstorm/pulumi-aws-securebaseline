@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,9 +19,12 @@ type CloudwatchApiAudit struct {
 func NewCloudwatchApiAudit(ctx *pulumi.Context,
 	name string, args *CloudwatchApiAuditArgs, opts ...pulumi.ResourceOption) (*CloudwatchApiAudit, error) {
 	if args == nil {
-		args = &CloudwatchApiAuditArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CloudTrailLogGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'CloudTrailLogGroupName'")
+	}
 	var resource CloudwatchApiAudit
 	err := ctx.RegisterRemoteComponentResource("securebaseline:index:CloudwatchApiAudit", name, args, &resource, opts...)
 	if err != nil {
@@ -30,24 +34,26 @@ func NewCloudwatchApiAudit(ctx *pulumi.Context,
 }
 
 type cloudwatchApiAuditArgs struct {
-	EnableAuthorizedApiCallsAlarm      *bool `pulumi:"enableAuthorizedApiCallsAlarm"`
-	EnableAwsConfigChangesAlarm        *bool `pulumi:"enableAwsConfigChangesAlarm"`
-	EnableCmkModificationAlarm         *bool `pulumi:"enableCmkModificationAlarm"`
-	EnableConsoleSigninFailureAlarm    *bool `pulumi:"enableConsoleSigninFailureAlarm "`
-	EnableConsoleSigninWithoutMfaAlarm *bool `pulumi:"enableConsoleSigninWithoutMfaAlarm"`
-	EnableIamChangesAlarm              *bool `pulumi:"enableIamChangesAlarm"`
-	EnableNaclChangeAlarm              *bool `pulumi:"enableNaclChangeAlarm"`
-	EnableNetworkGwChangesAlarm        *bool `pulumi:"enableNetworkGwChangesAlarm"`
-	EnableOrganizationsChangesAlarm    *bool `pulumi:"enableOrganizationsChangesAlarm"`
-	EnableRootAccountUsageAlarm        *bool `pulumi:"enableRootAccountUsageAlarm"`
-	EnableRouteTableChangesAlarm       *bool `pulumi:"enableRouteTableChangesAlarm"`
-	EnableS3BucketPolicyChangesAlarm   *bool `pulumi:"enableS3BucketPolicyChangesAlarm"`
-	EnableSecurityGroupChangesAlarm    *bool `pulumi:"enableSecurityGroupChangesAlarm"`
-	EnableVpcChangesAlarm              *bool `pulumi:"enableVpcChangesAlarm"`
+	CloudTrailLogGroupName             string `pulumi:"cloudTrailLogGroupName"`
+	EnableAuthorizedApiCallsAlarm      *bool  `pulumi:"enableAuthorizedApiCallsAlarm"`
+	EnableAwsConfigChangesAlarm        *bool  `pulumi:"enableAwsConfigChangesAlarm"`
+	EnableCmkModificationAlarm         *bool  `pulumi:"enableCmkModificationAlarm"`
+	EnableConsoleSigninFailureAlarm    *bool  `pulumi:"enableConsoleSigninFailureAlarm "`
+	EnableConsoleSigninWithoutMfaAlarm *bool  `pulumi:"enableConsoleSigninWithoutMfaAlarm"`
+	EnableIamChangesAlarm              *bool  `pulumi:"enableIamChangesAlarm"`
+	EnableNaclChangeAlarm              *bool  `pulumi:"enableNaclChangeAlarm"`
+	EnableNetworkGwChangesAlarm        *bool  `pulumi:"enableNetworkGwChangesAlarm"`
+	EnableOrganizationsChangesAlarm    *bool  `pulumi:"enableOrganizationsChangesAlarm"`
+	EnableRootAccountUsageAlarm        *bool  `pulumi:"enableRootAccountUsageAlarm"`
+	EnableRouteTableChangesAlarm       *bool  `pulumi:"enableRouteTableChangesAlarm"`
+	EnableS3BucketPolicyChangesAlarm   *bool  `pulumi:"enableS3BucketPolicyChangesAlarm"`
+	EnableSecurityGroupChangesAlarm    *bool  `pulumi:"enableSecurityGroupChangesAlarm"`
+	EnableVpcChangesAlarm              *bool  `pulumi:"enableVpcChangesAlarm"`
 }
 
 // The set of arguments for constructing a CloudwatchApiAudit resource.
 type CloudwatchApiAuditArgs struct {
+	CloudTrailLogGroupName             pulumi.StringInput
 	EnableAuthorizedApiCallsAlarm      pulumi.BoolPtrInput
 	EnableAwsConfigChangesAlarm        pulumi.BoolPtrInput
 	EnableCmkModificationAlarm         pulumi.BoolPtrInput

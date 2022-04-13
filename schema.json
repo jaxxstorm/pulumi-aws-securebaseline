@@ -26,19 +26,40 @@
                     }
                 }
             },
-            "requiredInputs": [
-
-            ],
-            "properties": {
-
-            },
-            "required": [
-
-            ]
+            "requiredInputs": [],
+            "properties": {},
+            "required": []
         },
-        "securebaseline:index:Foo": {
+        "securebaseline:index:Iam": {
             "isComponent": true,
             "inputProperties": {
+                "enablePasswordPolicy": {
+                    "type": "boolean"
+                },
+                "enableSupportRole": {
+                    "type": "boolean"
+                },
+                "minimumPasswordLength": {
+                    "type": "number"
+                },
+                "passwordReusePrevention": {
+                    "type": "number"
+                },
+                "requireLowercaseCharacters": {
+                    "type": "boolean"
+                },
+                "requireNumbers": {
+                    "type": "boolean"
+                },
+                "requireUppercaseCharacters": {
+                    "type": "boolean"
+                },
+                "requireSymbols": {
+                    "type": "boolean"
+                },
+                "allowUsersToChangePassword": {
+                    "type": "boolean"
+                }
             },
             "requiredInputs": [],
             "properties": {},
@@ -47,6 +68,9 @@
         "securebaseline:index:CloudwatchApiAudit": {
             "isComponent": true,
             "inputProperties": {
+                "cloudTrailLogGroupName": {
+                    "type": "string"
+                },
                 "enableAuthorizedApiCallsAlarm": {
                     "type": "boolean"
                 },
@@ -90,7 +114,7 @@
                     "type": "boolean"
                 }
             },
-            "requiredInputs": [],
+            "requiredInputs": ["cloudTrailLogGroupName"],
             "properties": {},
             "required": []
         }

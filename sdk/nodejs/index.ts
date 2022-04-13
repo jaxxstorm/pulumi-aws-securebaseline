@@ -6,13 +6,13 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./cloudwatchApiAudit";
-export * from "./foo";
+export * from "./iam";
 export * from "./provider";
 export * from "./vpc";
 
 // Import resources to register:
 import { CloudwatchApiAudit } from "./cloudwatchApiAudit";
-import { Foo } from "./foo";
+import { Iam } from "./iam";
 import { Vpc } from "./vpc";
 
 const _module = {
@@ -21,8 +21,8 @@ const _module = {
         switch (type) {
             case "securebaseline:index:CloudwatchApiAudit":
                 return new CloudwatchApiAudit(name, <any>undefined, { urn })
-            case "securebaseline:index:Foo":
-                return new Foo(name, <any>undefined, { urn })
+            case "securebaseline:index:Iam":
+                return new Iam(name, <any>undefined, { urn })
             case "securebaseline:index:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
             default:

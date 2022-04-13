@@ -13,6 +13,7 @@ __all__ = ['CloudwatchApiAuditArgs', 'CloudwatchApiAudit']
 @pulumi.input_type
 class CloudwatchApiAuditArgs:
     def __init__(__self__, *,
+                 cloud_trail_log_group_name: pulumi.Input[str],
                  enable_authorized_api_calls_alarm: Optional[pulumi.Input[bool]] = None,
                  enable_aws_config_changes_alarm: Optional[pulumi.Input[bool]] = None,
                  enable_cmk_modification_alarm: Optional[pulumi.Input[bool]] = None,
@@ -30,6 +31,7 @@ class CloudwatchApiAuditArgs:
         """
         The set of arguments for constructing a CloudwatchApiAudit resource.
         """
+        pulumi.set(__self__, "cloud_trail_log_group_name", cloud_trail_log_group_name)
         if enable_authorized_api_calls_alarm is not None:
             pulumi.set(__self__, "enable_authorized_api_calls_alarm", enable_authorized_api_calls_alarm)
         if enable_aws_config_changes_alarm is not None:
@@ -58,6 +60,15 @@ class CloudwatchApiAuditArgs:
             pulumi.set(__self__, "enable_security_group_changes_alarm", enable_security_group_changes_alarm)
         if enable_vpc_changes_alarm is not None:
             pulumi.set(__self__, "enable_vpc_changes_alarm", enable_vpc_changes_alarm)
+
+    @property
+    @pulumi.getter(name="cloudTrailLogGroupName")
+    def cloud_trail_log_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cloud_trail_log_group_name")
+
+    @cloud_trail_log_group_name.setter
+    def cloud_trail_log_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cloud_trail_log_group_name", value)
 
     @property
     @pulumi.getter(name="enableAuthorizedApiCallsAlarm")
@@ -191,6 +202,7 @@ class CloudwatchApiAudit(pulumi.ComponentResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_trail_log_group_name: Optional[pulumi.Input[str]] = None,
                  enable_authorized_api_calls_alarm: Optional[pulumi.Input[bool]] = None,
                  enable_aws_config_changes_alarm: Optional[pulumi.Input[bool]] = None,
                  enable_cmk_modification_alarm: Optional[pulumi.Input[bool]] = None,
@@ -215,7 +227,7 @@ class CloudwatchApiAudit(pulumi.ComponentResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[CloudwatchApiAuditArgs] = None,
+                 args: CloudwatchApiAuditArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a CloudwatchApiAudit resource with the given unique name, props, and options.
@@ -234,6 +246,7 @@ class CloudwatchApiAudit(pulumi.ComponentResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_trail_log_group_name: Optional[pulumi.Input[str]] = None,
                  enable_authorized_api_calls_alarm: Optional[pulumi.Input[bool]] = None,
                  enable_aws_config_changes_alarm: Optional[pulumi.Input[bool]] = None,
                  enable_cmk_modification_alarm: Optional[pulumi.Input[bool]] = None,
@@ -262,6 +275,9 @@ class CloudwatchApiAudit(pulumi.ComponentResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudwatchApiAuditArgs.__new__(CloudwatchApiAuditArgs)
 
+            if cloud_trail_log_group_name is None and not opts.urn:
+                raise TypeError("Missing required property 'cloud_trail_log_group_name'")
+            __props__.__dict__["cloud_trail_log_group_name"] = cloud_trail_log_group_name
             __props__.__dict__["enable_authorized_api_calls_alarm"] = enable_authorized_api_calls_alarm
             __props__.__dict__["enable_aws_config_changes_alarm"] = enable_aws_config_changes_alarm
             __props__.__dict__["enable_cmk_modification_alarm"] = enable_cmk_modification_alarm

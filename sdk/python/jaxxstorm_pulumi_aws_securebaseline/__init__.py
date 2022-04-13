@@ -6,7 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .cloudwatch_api_audit import *
-from .foo import *
+from .iam import *
 from .provider import *
 from .vpc import *
 _utilities.register(
@@ -18,7 +18,7 @@ _utilities.register(
   "fqn": "jaxxstorm_pulumi_aws_securebaseline",
   "classes": {
    "securebaseline:index:CloudwatchApiAudit": "CloudwatchApiAudit",
-   "securebaseline:index:Foo": "Foo",
+   "securebaseline:index:Iam": "Iam",
    "securebaseline:index:Vpc": "Vpc"
   }
  }

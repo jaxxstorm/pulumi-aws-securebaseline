@@ -22,8 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "securebaseline:index:CloudwatchApiAudit":
 		r = &CloudwatchApiAudit{}
-	case "securebaseline:index:Foo":
-		r = &Foo{}
+	case "securebaseline:index:Iam":
+		r = &Iam{}
 	case "securebaseline:index:Vpc":
 		r = &Vpc{}
 	default:

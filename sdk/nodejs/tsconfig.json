@@ -14,7 +14,7 @@
     },
     "files": [
         "cloudwatchApiAudit.ts",
-        "foo.ts",
+        "iam.ts",
         "index.ts",
         "provider.ts",
         "utilities.ts",

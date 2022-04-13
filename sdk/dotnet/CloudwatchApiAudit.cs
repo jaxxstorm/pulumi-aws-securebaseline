@@ -19,7 +19,7 @@ namespace Pulumi.Securebaseline
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public CloudwatchApiAudit(string name, CloudwatchApiAuditArgs? args = null, ComponentResourceOptions? options = null)
+        public CloudwatchApiAudit(string name, CloudwatchApiAuditArgs args, ComponentResourceOptions? options = null)
             : base("securebaseline:index:CloudwatchApiAudit", name, args ?? new CloudwatchApiAuditArgs(), MakeResourceOptions(options, ""), remote: true)
         {
         }
@@ -39,6 +39,9 @@ namespace Pulumi.Securebaseline
 
     public sealed class CloudwatchApiAuditArgs : Pulumi.ResourceArgs
     {
+        [Input("cloudTrailLogGroupName", required: true)]
+        public Input<string> CloudTrailLogGroupName { get; set; } = null!;
+
         [Input("enableAuthorizedApiCallsAlarm")]
         public Input<bool>? EnableAuthorizedApiCallsAlarm { get; set; }
 

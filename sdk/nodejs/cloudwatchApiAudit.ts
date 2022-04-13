@@ -27,10 +27,14 @@ export class CloudwatchApiAudit extends pulumi.ComponentResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: CloudwatchApiAuditArgs, opts?: pulumi.ComponentResourceOptions) {
+    constructor(name: string, args: CloudwatchApiAuditArgs, opts?: pulumi.ComponentResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.cloudTrailLogGroupName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cloudTrailLogGroupName'");
+            }
+            resourceInputs["cloudTrailLogGroupName"] = args ? args.cloudTrailLogGroupName : undefined;
             resourceInputs["enableAuthorizedApiCallsAlarm"] = args ? args.enableAuthorizedApiCallsAlarm : undefined;
             resourceInputs["enableAwsConfigChangesAlarm"] = args ? args.enableAwsConfigChangesAlarm : undefined;
             resourceInputs["enableCmkModificationAlarm"] = args ? args.enableCmkModificationAlarm : undefined;
@@ -56,6 +60,7 @@ export class CloudwatchApiAudit extends pulumi.ComponentResource {
  * The set of arguments for constructing a CloudwatchApiAudit resource.
  */
 export interface CloudwatchApiAuditArgs {
+    cloudTrailLogGroupName: pulumi.Input<string>;
     enableAuthorizedApiCallsAlarm?: pulumi.Input<boolean>;
     enableAwsConfigChangesAlarm?: pulumi.Input<boolean>;
     enableCmkModificationAlarm?: pulumi.Input<boolean>;

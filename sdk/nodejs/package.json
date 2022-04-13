@@ -1,8 +1,9 @@
 {
-    "name": "@pulumi/xyz",
+    "name": "@jaxxstorm/pulumi-aws-securebaseline",
     "version": "${VERSION}",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "install": "node scripts/install-pulumi-plugin.js resource securebaseline ${VERSION}"
     },
     "dependencies": {
         "@pulumi/aws": "^4.0.0"

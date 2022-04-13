@@ -1,31 +1,98 @@
 {
-    "name": "xyz",
+    "name": "securebaseline",
     "resources": {
-        "xyz:index:StaticPage": {
+        "securebaseline:index:Vpc": {
             "isComponent": true,
             "inputProperties": {
-                "indexContent": {
-                    "type": "string",
-                    "description": "The HTML content for index.html."
+                "flowLogRetentionDays": {
+                    "type": "number"
+                },
+                "enableFlowLogs": {
+                    "type": "boolean"
+                },
+                "iamRoleArn": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The additional tags to add.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "requiredInputs": [
-                "indexContent"
+
             ],
             "properties": {
-                "bucket": {
-                    "$ref": "/aws/v4.0.0/schema.json#/resources/aws:s3%2Fbucket:Bucket",
-                    "description": "The bucket resource."
-                },
-                "websiteUrl": {
-                    "type": "string",
-                    "description": "The website URL."
-                }
+
             },
             "required": [
-                "bucket",
-                "websiteUrl"
+
             ]
+        },
+        "securebaseline:index:Foo": {
+            "isComponent": true,
+            "inputProperties": {
+            },
+            "requiredInputs": [],
+            "properties": {},
+            "required": []
+        },
+        "securebaseline:index:CloudwatchApiAudit": {
+            "isComponent": true,
+            "inputProperties": {
+                "enableAuthorizedApiCallsAlarm": {
+                    "type": "boolean"
+                },
+                "enableConsoleSigninWithoutMfaAlarm": {
+                    "type": "boolean"
+                },
+                "enableRootAccountUsageAlarm": {
+                    "type": "boolean"
+                },
+                "enableIamChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableConsoleSigninFailureAlarm ": {
+                    "type": "boolean"
+                },
+                "enableCmkModificationAlarm": {
+                    "type": "boolean"
+                },
+                "enableS3BucketPolicyChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableAwsConfigChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableSecurityGroupChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableNaclChangeAlarm": {
+                    "type": "boolean"
+                },
+                "enableNetworkGwChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableRouteTableChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableVpcChangesAlarm": {
+                    "type": "boolean"
+                },
+                "enableOrganizationsChangesAlarm": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [],
+            "properties": {},
+            "required": []
         }
     },
     "language": {
@@ -37,9 +104,10 @@
         },
         "go": {
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-xyz/sdk/go/xyz"
+            "importBasePath": "github.com/jaxxstorm/pulumi-aws-securebaseline/sdk/go/securebaseline"
         },
         "nodejs": {
+            "packageName": "@jaxxstorm/pulumi-aws-securebaseline",
             "dependencies": {
                 "@pulumi/aws": "^4.0.0"
             },
@@ -48,9 +116,10 @@
             }
         },
         "python": {
+            "packageName": "jaxxstorm_pulumi_aws_securebaseline",
             "requires": {
                 "pulumi": ">=3.0.0,<4.0.0",
-                "pulumi-aws": ">=4.0.0,<5.0.0"
+                "pulumi-aws": ">=5.0.0,<6.0.0"
             }
         }
     }

@@ -4,41 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export class Provider extends pulumi.ProviderResource {
+export class Foo extends pulumi.ComponentResource {
     /** @internal */
-    public static readonly __pulumiType = 'securebaseline';
+    public static readonly __pulumiType = 'securebaseline:index:Foo';
 
     /**
-     * Returns true if the given object is an instance of Provider.  This is designed to work even
+     * Returns true if the given object is an instance of Foo.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Provider {
+    public static isInstance(obj: any): obj is Foo {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Provider.__pulumiType;
+        return obj['__pulumiType'] === Foo.__pulumiType;
     }
 
 
     /**
-     * Create a Provider resource with the given unique name, arguments, and options.
+     * Create a Foo resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: FooArgs, opts?: pulumi.ComponentResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
-        {
+        if (!opts.id) {
+        } else {
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Provider.__pulumiType, name, resourceInputs, opts);
+        super(Foo.__pulumiType, name, resourceInputs, opts, true /*remote*/);
     }
 }
 
 /**
- * The set of arguments for constructing a Provider resource.
+ * The set of arguments for constructing a Foo resource.
  */
-export interface ProviderArgs {
+export interface FooArgs {
 }

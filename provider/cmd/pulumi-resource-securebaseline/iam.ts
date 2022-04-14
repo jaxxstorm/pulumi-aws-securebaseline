@@ -25,12 +25,12 @@ export class Iam extends pulumi.ComponentResource {
   ) {
     super("securebaseline:index:Iam", name, args, opts);
 
-    if (args.enableSupportRole != false) {
+    if (args.enableSupportRole != false && args.supportRolePrincipalArns != undefined) {
       this.supportRole = new aws.iam.Role(
         name,
         {
           assumeRolePolicy: pulumi
-            .all(args.supportRolePrincipalArns)
+            .all(args.supportRolePrincipalArns!)
             .apply((arns) =>
               JSON.stringify({
                 Version: "2012-10-17",

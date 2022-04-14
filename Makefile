@@ -44,7 +44,7 @@ dist:: ensure
 	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./build/index.js && \
 	rm ./build/index.js.bak && \
 	rm -rf dist  && mkdir dist && \
-	for TARGET in "darwin-amd64" "win-amd64" "linux-amd64"; do \
+	for TARGET in "darwin-amd64" "windows-amd64" "linux-amd64"; do \
 		rm -rf ./bin && mkdir bin && \
 		npx nexe build/index.js -r build/schema.json -t "$${TARGET}-14.15.3" -o dist/pulumi-${PACK}_$${TARGET}/${PROVIDER} && \
 		tar -czvf "dist/$(PROVIDER)-v$(VERSION)-$${TARGET}.tar.gz" bin; \

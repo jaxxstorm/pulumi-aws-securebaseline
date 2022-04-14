@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "securebaseline",
-  "server": "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/${VERSION}"
+  "server": "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/v${VERSION}"
 }

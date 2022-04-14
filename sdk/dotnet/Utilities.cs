@@ -58,7 +58,7 @@ namespace Pulumi.Securebaseline
         {
             InvokeOptions dst = src ?? new InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/${VERSION}";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/v${VERSION}";
             return dst;
         }
 

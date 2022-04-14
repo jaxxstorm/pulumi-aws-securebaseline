@@ -29,7 +29,7 @@ namespace Pulumi.Securebaseline
             var defaultOptions = new ComponentResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/${VERSION}",
+                PluginDownloadURL = "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/v${VERSION}",
             };
             var merged = ComponentResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

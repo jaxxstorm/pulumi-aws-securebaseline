@@ -16,6 +16,6 @@
     },
     "pulumi": {
         "resource": true,
-        "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/${VERSION}"
+        "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/v${VERSION}"
     }
 }

@@ -119,20 +119,6 @@ jobs:
       with:
         name: binaries.tar.gz
         path: ${{ github.workspace}}/dist/*
-  publish_provider:
-    name: publish_provider
-    needs: build_provider
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v2
-    - name: Download providers
-      uses: actions/download-artifact@v2
-      with:
-        name: binaries.tar.gz
-        path: ${{ github.workspace}}/dist/
-    - name: list all files
-      run: ls -alh dist/
   publish_sdk:
     name: publish_sdk
     needs: build_sdk

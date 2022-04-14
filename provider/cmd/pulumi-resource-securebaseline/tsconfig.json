@@ -15,6 +15,10 @@
     "files": [
         "index.ts",
         "provider.ts",
-        "vpc.ts"
+        "vpc.ts",
+        "securityhub.ts",
+        "cloudwatch.ts",
+        "cloudwatchAlarm.ts",
+        "iam.ts"
     ]
 }

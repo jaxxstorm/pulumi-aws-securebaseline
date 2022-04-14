@@ -124,7 +124,7 @@ jobs:
         path: ${{ github.workspace}}/dist/*
   publish_sdk:
     name: publish_sdk
-    needs: publish
+    needs: build_sdk
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo

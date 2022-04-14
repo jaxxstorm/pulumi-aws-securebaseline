@@ -1,7 +1,12 @@
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PROVIDER: scaleway
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
     name: build_sdk
-    needs: prerequisites
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo

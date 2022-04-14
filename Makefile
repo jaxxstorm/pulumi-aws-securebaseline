@@ -1,15 +1,11 @@
 VERSION         := $(shell pulumictl get version)
-
 PACK            := securebaseline
 PROJECT         := github.com/jaxxstorm/pulumi-${PACK}
-
 PROVIDER        := pulumi-resource-${PACK}
 CODEGEN         := pulumi-gen-${PACK}
 VERSION_PATH    := provider/pkg/version.Version
-
 WORKING_DIR     := $(shell pwd)
 SCHEMA_PATH     := ${WORKING_DIR}/schema.json
-
 SHELL           := /bin/bash
 
 override target := "14.15.3"

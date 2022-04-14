@@ -4,6 +4,7 @@
         "@types/node": "^14"
     },
     "dependencies": {
+        "@jaxxstorm/pulumi-aws-securebaseline": "^0.0.1",
         "@pulumi/pulumi": "^3.0.0"
     }
 }

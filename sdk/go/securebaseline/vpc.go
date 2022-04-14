@@ -21,6 +21,7 @@ func NewVpc(ctx *pulumi.Context,
 		args = &VpcArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Vpc
 	err := ctx.RegisterRemoteComponentResource("securebaseline:index:Vpc", name, args, &resource, opts...)
 	if err != nil {

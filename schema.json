@@ -1,5 +1,6 @@
 {
     "name": "securebaseline",
+    "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-aws-securebaseline/releases/download/${VERSION}",
     "resources": {
         "securebaseline:index:Vpc": {
             "isComponent": true,

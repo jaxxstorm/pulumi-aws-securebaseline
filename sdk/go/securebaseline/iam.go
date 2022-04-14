@@ -21,6 +21,7 @@ func NewIam(ctx *pulumi.Context,
 		args = &IamArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Iam
 	err := ctx.RegisterRemoteComponentResource("securebaseline:index:Iam", name, args, &resource, opts...)
 	if err != nil {

@@ -25,6 +25,7 @@ func NewCloudwatchApiAudit(ctx *pulumi.Context,
 	if args.CloudTrailLogGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'CloudTrailLogGroupName'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource CloudwatchApiAudit
 	err := ctx.RegisterRemoteComponentResource("securebaseline:index:CloudwatchApiAudit", name, args, &resource, opts...)
 	if err != nil {

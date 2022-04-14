@@ -131,6 +131,8 @@ jobs:
       with:
         name: binaries.tar.gz
         path: ${{ github.workspace}}/dist/
+    - name: list all files
+      run: ls -alh dist/
   publish_sdk:
     name: publish_sdk
     needs: build_sdk

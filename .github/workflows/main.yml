@@ -83,3 +83,28 @@ jobs:
         - 14.x
         pythonversion:
         - "3.7"
+  build_provider:
+    name: build_provider
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Checkout Scripts Repo
+      uses: actions/checkout@v2
+      with:
+        path: ci-scripts
+        repository: jaxxstorm/scripts
+        ref: third_party
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.2.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{matrix.nodeversion}}
+        registry-url: https://registry.npmjs.org
+    - name: Build 
+      run: make dist

@@ -46,7 +46,7 @@ dist:: ensure
 	rm -rf dist  && mkdir dist && \
 	for TARGET in "darwin-amd64" "windows-amd64" "linux-amd64"; do \
 		rm -rf ./bin && mkdir bin && \
-		npx nexe build/index.js -r build/schema.json -t "$${TARGET}-14.15.3" -o dist/pulumi-${PACK}_$${TARGET}/${PROVIDER} && \
+		npx nexe build/index.js -r build/schema.json -t "$${TARGET}-12.16.3" -o dist/pulumi-${PACK}_$${TARGET}/${PROVIDER} && \
 		tar -czvf "dist/$(PROVIDER)-v$(VERSION)-$${TARGET}.tar.gz" dist/pulumi-${PACK}_$${TARGET}; \
 	done
 
